@@ -12,6 +12,7 @@ namespace ByteBankImportacaoExportacao
     { 
         static void Main(string[] args) 
         {
+            // lista de caracters Unicode
 
             var enderecoDoArquivo = "contas.txt";
 
@@ -32,11 +33,15 @@ namespace ByteBankImportacaoExportacao
 
         static void EscreverBuffer(byte[] buffer)
         {
-            foreach (var meubyte in buffer)
-            {
-                Console.Write(meubyte);
-                Console.Write(" ");
-            }
+            var utf8 = new UTF8Encoding();
+            var texto= utf8.GetString(buffer);
+
+            Console.WriteLine(texto);
+            //foreach (var meubyte in buffer)
+            //{
+            //    Console.Write(meubyte);
+            //    Console.Write(" ");
+            //}
         }
     }
 } 
