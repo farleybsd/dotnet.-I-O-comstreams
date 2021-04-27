@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ByteBankImportacaoExportacao 
 { 
-    class Program 
+   partial class Program 
     { 
         static void Main(string[] args) 
         {
@@ -16,34 +16,23 @@ namespace ByteBankImportacaoExportacao
 
             var enderecoDoArquivo = "contas.txt";
 
-            using (var fluxoDoArquivo = new FileStream(enderecoDoArquivo, FileMode.Open))  // abrindo arquivo texto
+            using (var fluxoDoArquivo = new FileStream(enderecoDoArquivo,FileMode.Open))
             {
-                var buffer = new byte[1024]; //numero de posiçoes
-
-                var numeroDeBytesLidos = -1;
-
-                while (numeroDeBytesLidos != 0)
+                using (var leitor = new StreamReader(fluxoDoArquivo))
                 {
-                    numeroDeBytesLidos = fluxoDoArquivo.Read(buffer, 0, 1024); // Parametro 1 numero de posices pametro 2 inicio da leitura parameto 3 final da leitura
-                    EscreverBuffer(buffer, numeroDeBytesLidos);
+                    while (!leitor.EndOfStream)
+                    {
+                        var linha = leitor.ReadLine();
+
+                        Console.WriteLine(linha);
+                    }
                 }
             }
-            
+
             Console.ReadLine();
         }
 
-        static void EscreverBuffer(byte[] buffer, int bytesLidos )
-        {
-            var utf8 = new UTF8Encoding();
-            var texto= utf8.GetString(buffer,0,bytesLidos); // Parametro 1 numero de posices pametro 2 inicio da leitura parameto 3 final da leitura
-
-            Console.WriteLine(texto);
-            //foreach (var meubyte in buffer)
-            //{
-            //    Console.Write(meubyte);
-            //    Console.Write(" ");
-            //}
-        }
+       
     }
 } 
  
