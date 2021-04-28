@@ -12,8 +12,30 @@ namespace ByteBankImportacaoExportacao
     { 
         static void Main(string[] args) 
         {
+
             // lista de caracters Unicode
-            UsarStreamDeEntrada();
+
+            File.WriteAllText("escrevendoComAClasseFile.txt", "Testando File.WriteAllText");
+
+            Console.WriteLine("Arquivo escrevendoComAClasseFile criado!");
+
+            var bytesArquivo = File.ReadAllBytes("contas.txt");
+            Console.WriteLine($"Arquivo contas.txt possui {bytesArquivo.Length} bytes");
+
+
+            var linhas = File.ReadAllLines("contas.txt");
+
+            foreach (var linha in linhas)
+            {
+                Console.WriteLine(linha);
+            }
+
+            Console.ReadLine();
+
+            Console.WriteLine("Digite o seu nome");
+            var nome = Console.ReadLine();
+            Console.WriteLine(nome);
+            
             Console.ReadLine();
         }
 
