@@ -13,7 +13,7 @@ namespace ByteBankImportacaoExportacao
         static void Main(string[] args) 
         {
             // lista de caracters Unicode
-            CriarArquivo();
+            CriarArquivoComWriter();
             Console.ReadLine();
         }
 

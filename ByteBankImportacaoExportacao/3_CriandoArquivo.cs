@@ -19,5 +19,18 @@ namespace ByteBankImportacaoExportacao
                 fluxoDeArquivo.Write(bytes,0,bytes.Length);
             }
         }
+
+        static void CriarArquivoComWriter()
+        {
+            var caminhoDoArquivo = "contasExportadas.csv";
+
+            using (var fluxoDoArquivo = new FileStream(caminhoDoArquivo,FileMode.Create))
+            {
+                using (var escritor = new StreamWriter(fluxoDoArquivo,Encoding.UTF8))
+                {
+                    escritor.Write("456,78945,4785.50,Thalita Rabelo");
+                }
+            }
+        }
     }
 }
