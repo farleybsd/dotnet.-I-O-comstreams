@@ -53,5 +53,18 @@ namespace ByteBankImportacaoExportacao
                 }
             }
         }
+
+        static void TestaTipos()
+        {
+            using (var fs = new FileStream("TestaTipos.txt",FileMode.Create))
+            {
+                using (var escritor = new StreamWriter(fs))
+                {
+                    escritor.WriteLine(true);
+                    escritor.WriteLine(false);
+                    escritor.WriteLine(777);
+                }
+            }
+        }
     }
 }
